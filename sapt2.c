@@ -9,9 +9,6 @@ void copy_vector(int old[], int new[], int n) {
 }
 
 void bubble_sort_invers(int v[], int n) {
-
-
-
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
             if (v[i] < v[j]) {
@@ -20,7 +17,6 @@ void bubble_sort_invers(int v[], int n) {
                 v[j] = t;
             }
         }
-
     }
 }
 
@@ -54,8 +50,6 @@ void afisare(int v[], int n, int invers) {
             printf("%d ", v[i]);
         }
     }
-
-
     else {
         for (int i = 0; i < n; i++) {
             printf("%d ", v[i]);
@@ -87,7 +81,6 @@ void ex1() {
             i--;
         }
     }
-
     // metoda 2 (pastreaza ordinea dar dublu for)
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
@@ -98,7 +91,6 @@ void ex1() {
             }
         }
     }
-
     afisare(v, n, 0);
 }
 

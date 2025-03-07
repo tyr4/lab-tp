@@ -1,6 +1,24 @@
 #include <math.h>
 #include <stdio.h>
 
+void copy_vector(int old[], int new[], int n) {
+    for (int i = 0; i < n; i++) {
+        new[i] = old[i];
+    }
+}
+
+void bubble_sort_invers(int v[], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (v[i] < v[j]) {
+                int t = v[i];
+                v[i] = v[j];
+                v[j] = t;
+            }
+        }
+    }
+}
+
 void citire_vector(int v[], int n) {
     for (int i = 0; i < n; i++) {
         printf("v[%d]=", i);
@@ -22,7 +40,6 @@ void eliminare(int pos, int v[], int n) {
     for (int i = pos; i < n - 1; i++) {
         v[i] = v[i + 1];
     }
-    v[n - 1] = 0;
 }
 
 void afisare(int v[], int n, int invers) {
@@ -162,13 +179,78 @@ void ex4() {
     afisare(reuniune, r, 0);
 }
 
+void ex5() {
+    int n = citire();
+    int v[n];
+    citire_vector(v, n);
+    int par[n], impar[n], p = 0, i = 0;
+    for (int j = 0; j < n; j++) {
+        if (v[j] & 1)
+            impar[i++] = v[j];
+        else par[p++] = v[j];
+    }
+
+    bubble_sort_invers(par, p);
+    bubble_sort_invers(impar, i);
+    for (int j = 0; j < i; j++)
+        v[j] = impar[j];
+    for (int j = 0; j < p; j++)
+        v[j + i] = par[j];
+
+    afisare(v, n, 0);
+}
+
+void ex6() {
+    int max_secv[100], max_index = 0, secv[100], index = 0, max = 1, x = 1, y;
+    printf("introduceti numere si terminati cu 0\n");
+
+    scanf("%d", &x);
+    secv[index++] = x, max_secv[max_index++] = x;
+
+    while (x) {
+        scanf("%d", &y);
+        if (x < y) {
+            secv[index++] = y;
+            if (max < index) {
+                max = index;
+                copy_vector(secv, max_secv, index); // nu cred ca e cea mai eficienta metoda
+                max_index = index;
+            }
+        }
+        else {
+            index = 0;
+            secv[index++] = y;
+        }
+        x = y;
+    }
+    afisare(max_secv, max_index, 0);
+}
+
+void ex7() {
+    int n = citire();
+    int v[n];
+    citire_vector(v, n);
+
+    int min1 = v[0], min2 = v[0], min3 = v[0];
+    for (int i = 0; i < n; i++) {
+        if (min1 > v[i])
+        {
+            min3 = min2;
+            min2 = min1;
+            min1 = v[i];
+        }
+    }
+    printf("%d %d %d", min1, min2, min3);
+}
+
 int main() {
-    // la ex unde nu zice cifrele maxime ale lui n o sa presupun
-    // ca nu sunt la modul 10^6+
+    // nu zice cifrele maxime ale lui n deci o sa presupun ca nu sunt la modul 10^6+
 
     // ex1();
     // ex2();
     // ex3();
-    ex4();
-
+    // ex4();
+    // ex5();
+    // ex6();
+    // ex7();
 }

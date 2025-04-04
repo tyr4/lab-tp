@@ -19,7 +19,7 @@ int contains_vector(int n, int v1[], int m, int v2[]) {
             }
         }
     }
-    return found == m? 1 : 0;
+    return found == m;
 }
 
 void ex1() {

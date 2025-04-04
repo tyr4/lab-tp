@@ -231,9 +231,7 @@ void ex7() {
     int v[n];
     citire_vector(v, n);
 
-    // se putea si sa le setez pe primul element dar facea urat cand
-    // primul element se intampla sa fie si absolut minimul
-    int min1 = INT32_MAX, min2 = INT32_MAX, min3 = INT32_MAX;
+    int min1 = v[0], min2 = v[1], min3 = v[2];
     for (int i = 0; i < n; i++) {
         if (min1 > v[i])
         {

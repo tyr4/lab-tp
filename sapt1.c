@@ -70,6 +70,8 @@ void ex7() {
     int a, b, c, d;
     ok = 0;
     scanf("%d %d %d %d", &a, &b, &c, &d);
+
+    // conditia asta verifica toate lungimile intervalelor, gen daca [a,b] e inclus in [b,d] sau invers etc etc
     if ((a >= c && b <= d) || !(a >= c && b <= d) || (a >= c && b >= d) || !(a >= c && b >= d))
         ok = 1;
 

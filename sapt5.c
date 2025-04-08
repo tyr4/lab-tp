@@ -26,7 +26,8 @@ int contains_letters(char s1[], char s2[]) {
 }
 
 void ex1() {
-    char cuv[21] = "", temp[21] = ""; // il initializez pe temp in cazul in care niciun cuvant nu are vocale
+  	// il initializez pe temp in cazul in care niciun cuvant nu are vocale
+    char cuv[21] = "", temp[21] = "";
     int max = 0, current = 0;
 
     printf("introduceti cuvinte (iesiti cu caracterul '.')\n");
@@ -100,7 +101,8 @@ void ex4() {
 
     printf("introduceti produse\n");
     fgets(produs, 201, stdin);
-    produs[strlen(produs) - 1] = '\0';  // lumea era prea perfecta daca nu avea \n la final
+    // lumea era prea perfecta daca nu avea \n la final
+    produs[strlen(produs) - 1] = '\0';
 
     min_price = (float)atof(strstr(produs, ",") + 1);
     strcpy(min_produs, produs);
@@ -118,7 +120,7 @@ void ex4() {
         }
     }
 
-    // urasc asta, dar sterge pretul din sir pentru print
+    // urasc asta, dar sterge pretul din sir pentru un print frumos
     min_produs[strstr(min_produs, ",") - min_produs] = '\0';
     printf("produsul cu pretul minim de %.2f este %s", min_price, min_produs);
 }
@@ -133,7 +135,8 @@ void ex5() {
         if (sentence[0] == '\n')
             break;  // mai merge si return in cazul asta
 
-        // ar fi fost prea frumos daca sscanf returna toate match urile din string sau ceva in loc sa fac schema asta
+        // ar fi fost prea frumos daca sscanf returna toate match urile din string
+        // sau ceva in loc sa fac schema asta
         char *p = strtok(sentence, " ");
         while (p) {
             if (sscanf(p, "%d/%d/%d", &zi, &luna, &an) == 3) {

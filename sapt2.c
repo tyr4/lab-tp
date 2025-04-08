@@ -73,14 +73,15 @@ void ex1() {
     }
 
     // metoda 1 (nu pastreaza ordinea dar e mai eficienta)
-    for (int i = 0; i < n; i++) {
-        if (frecv[v[i]] > 1) {
-            frecv[v[i]]--;
-            eliminare(i, v, n);
-            n--;
-            i--;
-        }
-    }
+//    for (int i = 0; i < n; i++) {
+//        if (frecv[v[i]] > 1) {
+//            frecv[v[i]]--;
+//            eliminare(i, v, n);
+//            n--;
+//            i--;
+//        }
+//    }
+
     // metoda 2 (pastreaza ordinea dar dublu for)
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
@@ -207,13 +208,14 @@ void ex6() {
     scanf("%d", &x);
     secv[index++] = x, max_secv[max_index++] = x;
 
+    // nu cred ca e cea mai eficienta metoda
     while (x) {
         scanf("%d", &y);
         if (x < y) {
             secv[index++] = y;
             if (max < index) {
                 max = index;
-                copy_vector(secv, max_secv, index); // nu cred ca e cea mai eficienta metoda
+                copy_vector(secv, max_secv, index);
                 max_index = index;
             }
         }
@@ -251,8 +253,6 @@ void ex7() {
 }
 
 int main() {
-    // nu zice cifrele maxime ale lui n deci o sa presupun ca nu sunt la modul 10^6+
-
     // ex1();
     // ex2();
     // ex3();

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// swap fancy
+// swap fancy, ms autocomplete de sugestie (l as fi facut cu aux in mod normal)
 void swap(int *a, int *b) {
     *a = *a ^ *b;
     *b = *a ^ *b;

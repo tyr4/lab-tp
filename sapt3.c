@@ -81,7 +81,11 @@ void ex4() {
         for (int j = i + 1; j < n; j++) {
             if (*(v + i) == *(v + j) && *(v + j) != -1) {
                 duplicate2++;
-                *(v + j) = -1;  // il modific sa nu se puna acelasi numar de mai multe ori din cauza cum merge for ul
+                // il modific sa nu se puna acelasi numar de mai multe ori din cauza cum merge for ul,
+                // nu imi pot da seama cum sa fac for ul sa sara peste duplicate unele dupa altele fara
+                // sa fac asta (am incercat sa cresc i si j dar n a mers si n am chef sa ii dau debug),
+                // simt asa ca o sa imi dau seama peste 3 saptamani randomly
+                *(v + j) = -1;
             }
         }
     }
@@ -164,8 +168,8 @@ int main() {
     // ex1();
     // ex2();
     // ex3();
-    // ex4();
+    ex4();
     // ex5();
     // ex6();
-    ex7();
+    // ex7();
 }

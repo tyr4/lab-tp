@@ -3,11 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-int binToInt(const char *s) {
+unsigned int binToInt(const char *s) {
     int len = (int)strlen(s);
     unsigned int nr = 0;
 
     for (int i = len - 1; i >= 0; i--) {
+        // Pointer may be null when called from function 'binSub' da nu are cum sa fie null??
         nr += (int)pow(2, len - i - 1) * (s[i] - '0');
     }
 
@@ -17,9 +18,12 @@ int binToInt(const char *s) {
 void intToBin(unsigned int n, char *rez) {
     int i = 0;
     while (n) {
-        rez[i++] = '0' + n % 2;  // nu inteleg de ce tipa clion ca Narrowing conversion from 'int' to signed type 'char'
-        n /= 2;                  // is implementation-defined, n am idee cum sa scap de asta sau daca fac ceva gresit 💀
+        n /= 2;
+        // nu inteleg de ce tipa clion ca Narrowing conversion from 'int' to signed type 'char'
+        // is implementation-defined, n am idee cum sa scap de asta sau daca fac ceva gresit 💀
+        rez[i++] = '0' + n % 2;
     }
+    // aici + mai sus o linie la fel faza cu may be null
     rez[i]= '\0';
     strrev(rez);
 }
@@ -44,28 +48,18 @@ int get_msb_value(unsigned int n) {
 
 unsigned int rgba(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {
     // schema interesanta aici
-    int *red2, *green2, *blue2, *alpha2;
-    red2 = (int*)malloc(32 * sizeof(int));
-    green2 = (int*)malloc(24 * sizeof(int));
-    blue2 = (int*)malloc(16 * sizeof(int));
-    alpha2 = (int*)malloc(8 * sizeof(int));
+    int red2, green2, blue2, alpha2;
 
-    *red2 = red;
-    *green2 = green;
-    *blue2 = blue;
-    *alpha2 = alpha;
+    red2 = red;
+    green2 = green;
+    blue2 = blue;
+    alpha2 = alpha;
 
-    *blue2 <<= 8;
-    *green2 <<= 16;
-    *red2 <<= 24;
+    blue2 <<= 8;
+    green2 <<= 16;
+    red2 <<= 24;
 
-    unsigned __int32 n = *red2 + *green2 + *blue2 + *alpha2;
-
-    free(red2);
-    free(green2);
-    free(blue2);
-    free(alpha2);
-
+    unsigned __int32 n = red2 + green2 + blue2 + alpha2;
     return n;
 }
 
@@ -149,9 +143,11 @@ void ex8() {
         copie >>= 1;
     }
 
+    // parcurge bit cu bit (efectiv) de la dreapta la stanga
     for (int i = 0; i < size - 1; i++) {
         while (n & p && n & p * 2) {
-            // n = n & ~p  // conditia asta e gen daca enuntul se refera prin stergerea bitilor la a setarea lor pe 0
+            // conditia asta e gen daca enuntul se refera prin stergerea bitilor la a setarea lor pe 0
+            // n = n & ~p
             n -= get_msb_value(n);  // asta efectiv sterge bitul
         }
         p <<= 1;

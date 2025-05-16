@@ -24,9 +24,6 @@ void flush_string(char *buffer) {
     if (strchr(buffer, '\n') == NULL) {
         flush();
     }
-    else {
-        buffer[strcspn(buffer, "\n")] = '\0';
-    }
 }
 
 int get_input_int(char *message, int min, int max) {
@@ -60,14 +57,21 @@ int min(int a, int b) {
 }
 
 char* get_input_string(char *message, char *buffer, int size) {
+    if (buffer == NULL) {
+        return NULL;
+    }
+
     printf(message);
     fgets(buffer, size, stdin);
     flush_string(buffer);
 
-    buffer[min((int)strlen(buffer), BUFFER_MAX)] = '\0';
+    if (strchr(buffer, '\n')) {
+        buffer[strcspn(buffer, "\n")] = '\0';
+    }
 
     return buffer;
 }
+
 // can stop ignoring :)
 
 // functii ex1

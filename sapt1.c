@@ -72,8 +72,18 @@ void ex7() {
     scanf("%d %d %d %d", &a, &b, &c, &d);
 
     // conditia asta verifica toate lungimile intervalelor, gen daca [a,b] e inclus in [b,d] sau invers etc etc
-    if ((a >= c && b <= d) || !(a >= c && b <= d) || (a >= c && b >= d) || !(a >= c && b >= d))
+    if (a >= c && b <= d)
         ok = 1;
+    if (a <= c && b <= d && b >= c)
+        ok = 1;
+    if (a <= c && b >= d)
+        ok = 1;
+    if (a >= c && b <= d)
+        ok = 1;
+
+
+    // if ((a >= c && b <= d) || !(a >= c && b <= d) || (a >= c && b >= d) || !(a >= c && b >= d))
+    //     ok = 1;
 
     printf("\n%sexista suprapunere intre intervalele [%d, %d] si [%d, %d]", ok? "" : "nu ", a, b, c, d);
 }

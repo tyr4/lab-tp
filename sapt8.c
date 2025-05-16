@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
+#include <tgmath.h>
 
 #define ARRAY_MAX 100
 #define BUFFER_MAX 50
@@ -17,16 +19,13 @@ void flush() {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-void flush_string(char *buffer, int size) {
+void flush_string(char *buffer) {
     if (buffer == NULL) {
         return;
     }
 
     if (strchr(buffer, '\n') == NULL) {
         flush();
-    }
-    else {
-        buffer[strcspn(buffer, "\n")] = '\0';
     }
 }
 
@@ -72,7 +71,9 @@ char* get_input_string(char *message, char *buffer, int size) {
     fgets(buffer, size, stdin);
     flush_string(buffer, size);
 
-    buffer[min((int)strlen(buffer), BUFFER_MAX)] = '\0';
+    if (strchr(buffer, "\n")) {
+        buffer[strcspn(buffer, "\n")] = '\0';
+    }
 
     return buffer;
 }
@@ -279,10 +280,10 @@ char* join(const char *a[], int n, const char *glue) {
 }
 
 void ex3() {
-    int n = get_input_int("numarul de cuvinte: ", 1, 100);
+    int n = get_input_int("numarul de cuvinte: ", 1, ARRAY_MAX);
     char **a = (char**)malloc(n * sizeof(char*));
     char *buffer = (char*)malloc(BUFFER_MAX * sizeof(char));
-    char *glue = (char*)malloc(100 * sizeof(char));
+    char *glue = (char*)malloc(ARRAY_MAX * sizeof(char));
 
     if (glue == NULL) {
         perror("memorie insuficienta\n");
@@ -291,7 +292,7 @@ void ex3() {
 
     // aici nu sunt sigur daca fac corect schema asta, sa dau assign lui glue
     // in loc de doar a apela functia, nenea gpt zice ca nu e ok dar nu prea stiu csz
-    glue = get_input_string("glue: ", glue, 100);
+    glue = get_input_string("glue: ", glue, ARRAY_MAX);
 
     for (int i = 0; i < n; i++) {
         get_input_string("cuvant: ", buffer, BUFFER_MAX);

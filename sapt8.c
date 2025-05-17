@@ -69,9 +69,9 @@ char* get_input_string(char *message, char *buffer, int size) {
 
     printf(message);
     fgets(buffer, size, stdin);
-    flush_string(buffer, size);
+    flush_string(buffer);
 
-    if (strchr(buffer, "\n")) {
+    if (strchr(buffer, '\n')) {
         buffer[strcspn(buffer, "\n")] = '\0';
     }
 
@@ -228,7 +228,7 @@ void ex2() {
 
                 fgets(produs, 32, stdin);
                 produs[strlen(produs) - 1] = '\0';
-                flush_string(produs, 32);
+                flush_string(produs);
 
                 db = stergere(db, &size, produs);
                 break;

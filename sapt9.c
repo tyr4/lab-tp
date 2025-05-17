@@ -253,7 +253,6 @@ void ex4() {
     test(5, 69, 420, 123, 420, 111, 43, 83);
     test(1, 1, 100, 0);
     test(-1, -2, -1, 2, 3, 4, 5, 6, 7, 8);
-
 }
 
 // functii ex 5
@@ -277,7 +276,7 @@ void ex5() {
     // s = format("%s a zburat cu forta a %f porumbei in aer", "gigel", 1234.56);
     // s = format("oh, youre %d me?", "approaching");
     // s = format("i cant %x you without getting %s", "beat", "smoothie");
-    // s = format("%g expansion: malevolent crashing");
+    // s = format("%domain expansion: malevolent crashing");
 
     printf("%s", s);
     free(s);

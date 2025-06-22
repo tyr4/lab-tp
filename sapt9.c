@@ -314,7 +314,7 @@ void ex_extra_lab_2_5() {
         a[i] = get_input_int("", 1, INT_MAX);
     }
 
-    bubble_sort_conditional(a, n, descrescator);
+    // bubble_sort_conditional(a, n, descrescator);
     bubble_sort_conditional(a, n, par_impar);
 
     for (int i = 0; i < n; i++) {

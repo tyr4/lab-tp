@@ -21,7 +21,7 @@ void intToBin(unsigned int n, char *rez) {
         n /= 2;
         // nu inteleg de ce tipa clion ca Narrowing conversion from 'int' to signed type 'char'
         // is implementation-defined, n am idee cum sa scap de asta sau daca fac ceva gresit 💀
-        rez[i++] = '0' + n % 2;
+        rez[i++] = (char)('0' + n % 2);
     }
     // aici + mai sus o linie la fel faza cu may be null
     rez[i]= '\0';

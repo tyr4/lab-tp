@@ -16,6 +16,15 @@
 
 #define ARRAY(tip, nume, ...) tip nume[] = {__VA_ARGS__}
 
+// nu m am putut abtine, dont nuke me pls
+#define H printf(
+#define e "He"
+#define l "l"
+#define o "o"
+#define W ", W"
+#define r "r"
+#define d "d!\n");
+
 void ex1() {
     int a, b;
 
@@ -63,6 +72,9 @@ void ex4() {
 // cine naiba scrie ex astea diabolice part 2 (ex 5)
 void ex5() {
     LINE;
+
+
+    LINE; LINE;
 }
 
 int main() {
@@ -71,5 +83,6 @@ int main() {
     // ex4();
     ex5();
 
+    H e l l o W o r l d
     return 0;
 }

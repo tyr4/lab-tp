@@ -215,7 +215,7 @@ void ex2() {
                      "4. iesire\n");
 
         meniu = get_input_int("", 1, 4);
-        getchar();
+        // getchar();
 
         switch (meniu) {
             case 1: {
@@ -360,9 +360,9 @@ void ex4() {
 
 int main() {
     // ex1();
-    // ex2();
+    ex2();
     // ex3();
-    ex4();
+    // ex4();
 
     return 0;
 }

@@ -15,7 +15,6 @@
 // uhh pentru alea cu linia de comanda o sa dau comment la unu dintre main uri,
 // sper ca ai shortcut sa dai uncomment :))
 
-// filler, aceleasi functii ca alte sapt, skip
 void* safe_malloc(size_t size) {
     void *p = malloc(size);
 
@@ -66,15 +65,9 @@ void get_input_string(char *message, char *buffer, int size) {
     buffer[strcspn(buffer, "\n")] = '\0';
 }
 
-// no more filler
-
 // hmmm
 FILE* open_file(const char* filename, const char* mode) {
-    // tehnic asta foloseste exact cata memorie are nevoie, dar era si optiunea sa
-    // il declar global cu un FILENAME_MAX si atunci se aloca doar o data in tot programul
-    // dar am zis sa il las asa sa fie mai lizibil, who knows cine o fi path intr o mie de
-    // variabile globale :))
-    char *path = (char*)safe_malloc(strlen(FOLDER_PATH) + strlen(filename) + 1);
+    char path[strlen(filename) + strlen(FOLDER_PATH) + 1];
 
     strcpy(path, FOLDER_PATH);
     strcat(path, filename);
@@ -86,7 +79,6 @@ FILE* open_file(const char* filename, const char* mode) {
         exit(EXIT_FAILURE);
     }
 
-    free(path);
     return file;
 }
 
